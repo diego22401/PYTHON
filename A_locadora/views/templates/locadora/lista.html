@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>Lista de Locações</h2>
+
+{% if locacoes %}
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Cliente</th>
+            <th>Veículo</th>
+            <th>Data Início</th>
+            <th>Data Fim</th>
+            <th>Valor Total</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for locacao in locacoes %}
+        <tr>
+            <td>{{ locacao.cliente.nome }}</td>
+            <td>{{ locacao.veiculo.modelo }}</td>
+            <td>{{ locacao.data_inicio }}</td>
+            <td>{{ locacao.data_fim }}</td>
+            <td>R$ {{ locacao.valor_total }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% else %}
+
+<p>Nenhuma locação cadastrada.</p>
+
+{% endif %}
+
+{% endblock %}
